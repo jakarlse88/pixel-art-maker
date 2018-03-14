@@ -1,10 +1,6 @@
 // Select color input
 const formElementColor = document.querySelector('#colorPicker');
 
-// Select size input
-const formElementHeight = document.querySelector('#inputHeight');
-const formElementWidth = document.querySelector('#inputWidth');
-
 // When size is submitted by the user, call makeGrid()
 const el = document.querySelector('#sizePicker');
 el.addEventListener('submit', makeGrid);
@@ -22,7 +18,9 @@ function makeGrid() {
   // Debug
   console.log('Begin makeGrid');
 
-  // Access canvas
+  // Access size input, canvas
+  const formElementHeight = document.querySelector('#inputHeight');
+  const formElementWidth = document.querySelector('#inputWidth');
   const canvas = document.querySelector('#pixelCanvas');
 
   // Get canvas size
