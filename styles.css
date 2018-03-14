@@ -33,7 +33,13 @@ tr {
 
 td {
   width: 20px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 1s;
 }
+
+td:hover {
+  background-color: #f00;
+  color: #000;
 
 input[type="number"] {
   width: 6em;
