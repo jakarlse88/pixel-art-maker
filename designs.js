@@ -16,7 +16,12 @@ document.querySelector('#sizePicker').addEventListener('submit', function(e){
 
 // Draw grid
 function makeGrid() {
+  // Reset canvas (if necessary)
+  resetCanvas();
+
+  // Debug
   console.log('Begin makeGrid');
+
   // Access canvas
   const canvas = document.querySelector('#pixelCanvas');
 
@@ -35,5 +40,19 @@ function makeGrid() {
       //Insert cells
         canvasRow.insertAdjacentHTML('afterbegin', '<td></td>');
     }
+  }
+}
+
+// Reset canvas
+function resetCanvas() {
+  // Debug
+  console.log('Begin resetCanvas');
+
+  // Access canvas
+  const canvas = document.querySelector('#pixelCanvas');
+
+  // If present, remove child elements
+  while (canvas.firstChild) {
+    canvas.removeChild(canvas.firstChild);
   }
 }
