@@ -1,6 +1,3 @@
-// Select color input
-const formElementColor = document.querySelector('#colorPicker');
-
 // When size is submitted by the user, call makeGrid()
 const el = document.querySelector('#sizePicker');
 el.addEventListener('submit', makeGrid);
@@ -18,15 +15,13 @@ function makeGrid() {
   // Debug
   console.log('Begin makeGrid');
 
-  // Access size input, canvas
-  const formElementHeight = document.querySelector('#inputHeight');
-  const formElementWidth = document.querySelector('#inputWidth');
+  // Access size/color input, canvas
+  const height = document.querySelector('#inputHeight').value;
+  const width = document.querySelector('#inputWidth').value;
+  const color = document.querySelector('#colorPicker').value;
   const canvas = document.querySelector('#pixelCanvas');
 
-  // Get canvas size
-  let height = formElementHeight.value;
-  let width = formElementWidth.value;
-  console.log(`Height: ${height} | Width: ${width}`);
+  console.log(`Height: ${height} | Width: ${width} | Color: ${color}`);
 
   // Draw canvas
   for (let rows = 0; rows < height; rows++) {
@@ -39,6 +34,20 @@ function makeGrid() {
         canvasRow.insertAdjacentHTML('afterbegin', '<td></td>');
     }
   }
+
+  // Access all <td> elements
+  const cells = document.getElementsByTagName('td');
+  console.log(cells);
+
+  // Set event listeners to <td> elements
+  for (let i = 0; i < cells.length; i++) {
+    let cell = cells[i];
+    cell.addEventListener('click', function(evt) {
+      this.style.backgroundColor = color;
+      console.log(`Listener set to ${evt.target}`);
+    });
+  }
+
 }
 
 // Reset canvas
