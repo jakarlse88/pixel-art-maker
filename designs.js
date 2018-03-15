@@ -9,19 +9,18 @@ document.querySelector('#sizePicker').addEventListener('submit', function(e){
 
 // Draw grid
 function makeGrid() {
-  // Reset canvas (if necessary)
-  resetCanvas();
+	// Access size/color input, canvas
+	const height = document.querySelector('#inputHeight').value;
+	const width = document.querySelector('#inputWidth').value;
+	const color = document.querySelector('#colorPicker').value;
+	const canvas = document.querySelector('#pixelCanvas');
 
-  // Debug
-  console.log('Begin makeGrid');
+	console.log(`Height: ${height} | Width: ${width} | Color: ${color}`);
 
-  // Access size/color input, canvas
-  const height = document.querySelector('#inputHeight').value;
-  const width = document.querySelector('#inputWidth').value;
-  const color = document.querySelector('#colorPicker').value;
-  const canvas = document.querySelector('#pixelCanvas');
-
-  console.log(`Height: ${height} | Width: ${width} | Color: ${color}`);
+	// Reset canvas (if necessary)
+	if (canvas.firstChild) {
+		resetCanvas();
+	}
 
   // Draw canvas
   for (let rows = 0; rows < height; rows++) {
@@ -52,9 +51,6 @@ function makeGrid() {
 
 // Reset canvas
 function resetCanvas() {
-  // Debug
-  console.log('Begin resetCanvas');
-
   // Access canvas
   const canvas = document.querySelector('#pixelCanvas');
 
