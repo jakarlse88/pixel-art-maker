@@ -2,17 +2,21 @@
 document.querySelector('#sizePicker').addEventListener('submit', makeGrid);
 
 // Prevent submission in order to keep height/width values
-document.querySelector('#sizePicker').addEventListener('submit', function(e){
-	e.preventDefault();
+document.querySelector('#sizePicker').addEventListener('submit', function(evt){
+	evt.preventDefault();
+});
+
+document.querySelector('#colorPicker').addEventListener('submit', function(evt) {
+	evt.preventDefault();
 });
 
 // Draw grid
 function makeGrid() {
-
-	// Access size input, canvas
+	// Access size input, canvas, color input
 	const height = document.querySelector('#inputHeight').value;
 	const width = document.querySelector('#inputWidth').value;
 	const canvas = document.querySelector('#pixelCanvas');
+	const colorPicker = document.querySelector('#colorPicker');
 
 	// Reset canvas (if necessary)
 	if (canvas.firstChild) {
@@ -40,7 +44,6 @@ function makeGrid() {
       this.style.backgroundColor = colorPicker.value;
     });
   }
-
 }
 
 // Reset canvas
